@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Image({ src, alt }) {
+const Image = ({ src, alt }) => {
   return ( 
     <img 
       src={src} 

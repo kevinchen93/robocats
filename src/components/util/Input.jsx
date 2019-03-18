@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Input({ className, type, placeholder }) {
+const Input = ({ type, className, placeholder }) => {
   return (
     <input 
       className={className}

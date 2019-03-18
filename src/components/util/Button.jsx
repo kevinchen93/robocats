@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ className, handleOnClick}) {
+const Button = ({ className, onClick }) => {
   return ( 
     <button
       className={className}
-      onClick={handleOnClick}>Fetch
+      onClick={onClick}>Fetch
     </button>
   )
 }
