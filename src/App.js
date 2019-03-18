@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LandingPage from './components/LandingPage';
 import './App.css';
+import './stylesheets/main.scss';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="header">robocats</h1>
+        <LandingPage />
       </div>
     );
   }
