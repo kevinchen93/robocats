@@ -8,10 +8,12 @@ class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      inputVal: "",
       isLoaded: false,
       cats: [],
     }
 
+    this.update = this.update.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -37,23 +39,31 @@ class LandingPage extends Component {
       );
   }
 
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  handleClick(e) {
+    const { inputVal } = this.state;
+    this.setState({  
+      isLoaded: false 
+    });
+    const query = inputVal === "" ? "kevin" : inputVal;
+    this.fetchCatURL(query);
+  }
+
   renderCats() {
-    return (this.state.cats.map(catURL => {
+    return (this.state.cats.map((catURL, i) => {
       return (
-        <Image src={ catURL } alt="robocat"></Image>
+        <Image key={i} src={catURL} alt="robocat"></Image>
       )}
     ))
   }
-    
-  handleClick(e) {
-    const input = document.querySelector('.rela-block.text-input');
-    const query = input.value;
-    this.setState({ isLoaded: false });
-    this.fetchCatURL(query)
-  }
 
   render() {
-    const { isLoaded, catURL, cats } = this.state;
+    const { inputVal, isLoaded } = this.state;
     return (
       <div className="landing-container">
         <h1 className="header">robocats</h1>
@@ -61,8 +71,10 @@ class LandingPage extends Component {
         <div className="input-container">
           <Input 
             type="text"
+            value={inputVal}
             className="rela-block text-input"
             placeholder="enter any text and click Fetch for a cool cat..." 
+            onChange={this.update('inputVal')}
             />
             <div className="buttons-container">
               <Button className="rela-inline" onClick={this.handleClick}>Fetch</Button>
