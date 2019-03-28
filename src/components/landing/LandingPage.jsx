@@ -8,7 +8,6 @@ class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      catURL: "",
       isLoaded: false,
       cats: [],
     }
@@ -25,17 +24,14 @@ class LandingPage extends Component {
       .then(
         (result) => {
           const catURL = result.url;
-          
           this.setState({
             isLoaded: true,
-            catURL,
             cats: this.state.cats.concat(catURL)
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            isLoaded: true
           });
         }
       );
