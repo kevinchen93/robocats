@@ -28,7 +28,7 @@ class LandingPage extends Component {
           const catURL = result.url;
           this.setState({
             isLoaded: true,
-            cats: this.state.cats.concat(catURL)
+            cats: this.state.cats.concat([catURL])
           });
         },
         (error) => {
