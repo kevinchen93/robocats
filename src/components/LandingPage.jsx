@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-import Input from '../util/Input';
-import Button from '../util/Button';
-import Image from '../util/Image';
-
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +53,7 @@ class LandingPage extends Component {
   renderCats() {
     return (this.state.cats.map((catURL, i) => {
       return (
-        <Image key={i} src={catURL} alt="robocat"></Image>
+        <img key={i} src={catURL} alt="robocat" />
       )}
     ))
   }
@@ -67,9 +63,8 @@ class LandingPage extends Component {
     return (
       <div className="landing-container">
         <h1 className="header">robocats</h1>
-
         <div className="input-container">
-          <Input 
+          <input 
             type="text"
             value={inputVal}
             className="rela-block text-input"
@@ -77,10 +72,9 @@ class LandingPage extends Component {
             onChange={this.update('inputVal')}
             />
             <div className="buttons-container">
-              <Button className="rela-inline" onClick={this.handleClick}>Fetch</Button>
+              <button className="rela-inline" onClick={this.handleClick}>Fetch</button>
             </div>
         </div>
-
         <div className="image-container">
           { !isLoaded && <p>Loading. . .</p>}
           { this.renderCats() }
